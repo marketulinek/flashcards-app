@@ -1,6 +1,13 @@
 <article>
     <h4>{{ card.question }}</h4>
-    <p>{{ card.answer }}</p>
-    <hr>
-    <a href="{% url 'card_update' card.id %}" role="button">✏️ Edit Card</a>
+    {% if check_card %}
+        <details>
+            <summary>Reveal Answer</summary>
+            <p>{{ card.answer }}</p>
+        </details>
+    {% else %}
+        <p>{{ card.answer }}</p>
+        <hr>
+        <a href="{% url 'card_update' card.id %}" role="button">✏️ Edit Card</a>
+    {% endif %}
  </article>
